@@ -1,0 +1,41 @@
+* 08Apr25 Rescaled control models.
+  Updated the fits using with a larger apical dendrite.
+  These were based on rescaling the BPO fit that used epas as a variable.
+  Added outliers to cfg to avoid models that suffer depolarization block from NetStims as well as a list of cells that did not rescale well to the new geometry (weighted score more than doubled).
+  There is still a discrepancy between running in BPO and in NetPyNE, it would be worth checking the frequency response curves for the new fits.
+ 
+* 10Feb25 Created normalized weights (initWeightNorm.py)
+  Also added a list of outlier to cfg.py.
+  Several cells are not initially stable. It could be that BPO did not
+  converge to a good solution or that some parameters have not been copied
+  over correctly.
+  There is a issue with the morphology, I added a new SWC file but will also
+  try recreating the geometry used in BPO.
+* 14Jan25 Fixed loading parameters for PT5B cells.
+For mechanisms with multiple parameters not all parameter were loaded, ek and ena were missing (added to cfg.py) and e_pas was overwritten for each section. The initial membrane potentials are now more stable.
+
+* 06Jan25 Arbitrary increase weights to PT cells to check they are active.
+Also created this notebook from git logs;
+git log --date=format:"%d%b%y" --pretty=format:"* %cd %B" > notebook.org 
+* 05Jan25 Use lists of BPO PT cells when adding connections.
+* 04Jan25 Added section list for PT5B cells and changed the cellModel.
+* 20Oct24 Set v_init for each of the PT5B cells.
+* 19Oct24 Add PT5B cell fit with BluePyOpt.
+* 22Jan24 Complete update to PTcell.hoc with Nafx and nap in all segs BK in soma
+Set code in netParams.py to update Naft and nap for all segs and BK for soma.
+In PTcell.hoc insert Naft and nap into all segs and BK into soma.
+* 28Apr23 Add files via upload
+
+Parkinson's disease M1 study pulled from https://github.com/suny-downstate-medical-center/M1_NetPyNE_CellReports_2023
+Parameters in this commit are set for control (not PD), quiet (not moving), and conductances matching experiments
+
+I moved the original init.py to init_complicated.py and added a very simple init.py to run single instances of M1.
+
+I added two SLURM scripts run_sim and run_sim_dev
+
+Otherwise, there are only parameter changes except for 3 statements added in netParams.py under PT5B_full to set PD related channel conductance parameters:
+
+    ##### Adding params to change in batch ###################################
+    cellRule['secs']['soma']['mechs']['nap']['gbar'] = cfg.gbar         # change gbar in nap channel (soma only)
+    cellRule['secs']['soma']['mechs']['kBK']['gpeak'] = cfg.gpeak       # change gpeak in kBK channel (soma only)
+    cellRule['secs']['soma']['mechs']['Nafx']['gnafbar'] = cfg.gnafbar  # change gnafbar in NaT channel (soma only)

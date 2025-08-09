@@ -1,0 +1,52 @@
+{
+    "all": [
+        "pas"
+    ],
+    "soma": [
+        "NaTs2_t",
+        "K_Tst",
+        "Kv3_1",
+        "K_Pst",
+        "CaDynamics",
+        "Ca_LVA",
+        "SK",
+        "kBK",
+        "Ca_HVA",
+        "Nap_Et2",
+        "Ih"
+    ],
+    "apic": [
+        "NaTs2_t",
+        "Kv3_1",
+        "Im",
+        "Ih",
+        "kBK",
+        "SK",
+        "CaDynamics",
+        "Ca_LVA",
+        "Ca_HVA"
+    ],
+    "dend": [
+        "NaTs2_t",
+        "Kv3_1",
+        "Im",
+        "Ih",
+        "kBK",                                                                  
+        "SK",                                                                   
+        "CaDynamics",                                                           
+        "Ca_LVA",                                                               
+        "Ca_HVA" 
+    ],
+    "axon": [
+        "K_Tst",
+        "Kv3_1",
+        "K_Pst",
+        "CaDynamics",
+        "Ca_LVA",
+        "SK",
+        "kBK",
+        "Ca_HVA",
+        "NaTa_t",
+        "Nap_Et2"
+    ]
+}

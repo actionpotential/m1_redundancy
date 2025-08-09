@@ -1,0 +1,20 @@
+#!/bin/bash
+#----------------------------------------------------
+# Slurm job script
+#   for TACC Stampede2 SKX nodes
+#
+#----------------------------------------------------
+
+#SBATCH -J sM1_04-25-2023_01          # Job name
+#SBATCH -o sM1_04-25-2023_01.o%j       # Name of stdout output file
+#SBATCH -e sM1_04-25-2023_01.e%j       # Name of stderr error file
+#SBATCH -A [Your Project ID]
+#SBATCH -p skx-dev   			# Queue (partition) name
+#SBATCH -N 4               # Total # of nodes (must be 1 for serial)
+#SBATCH -n 192               # Total # of mpi tasks (should be 1 for serial)
+#SBATCH -t 02:00:00        # Run time (hh:mm:ss)
+#SBATCH --mail-user=[Your e-Mail Address]
+#SBATCH --mail-type=all    # Send email at begin and end of job
+ibrun --npernode=48 nrniv -python -mpi init.py
+
+# ---------------------------------------------------
